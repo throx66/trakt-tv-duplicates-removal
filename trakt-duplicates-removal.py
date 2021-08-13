@@ -94,10 +94,11 @@ def remove_duplicate(history, type):
     duplicates = []
 
     for i in history[::-1]:
-        if i[entry_type]['ids']['trakt'] in entries:
-            duplicates.append(i['id'])
-        else:
-            entries.append(i[entry_type]['ids']['trakt'])
+        if i['show']['ids']['trakt'] == 37696: # Filter shows based on ID, here One Piece
+            if i[entry_type]['ids']['trakt'] in entries:
+                duplicates.append(i['id'])
+            else:
+                entries.append(i[entry_type]['ids']['trakt'])
 
     if len(duplicates) > 0:
         print('%s %s duplicates plays to be removed' % (len(duplicates), type))
